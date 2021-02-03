@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NoteKeeper-RealmSync</string>
+    <string name="title">Note List</string>
 </resources>
