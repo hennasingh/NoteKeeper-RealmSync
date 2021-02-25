@@ -1,6 +1,9 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'realm-android'
+
 
 android {
     compileSdkVersion 29
@@ -22,6 +25,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    realm {
+        syncEnabled = true
+    }
 }
 
 dependencies {
@@ -38,6 +44,11 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:1.1.0"
 
     implementation 'com.google.android.material:material:1.1.0'
+
+    //Google OAUth
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+
+
 
 
 

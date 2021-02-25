@@ -8,8 +8,10 @@
         android:label="@string/title"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name=".NoteApp"
         android:theme="@style/AppTheme">
-        <activity android:name=".TaskActivity">
+        <activity android:name=".TaskActivity"></activity>
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
