@@ -8,7 +8,7 @@ import java.util.*
 class Note(
     var noteName: String,
     var date: Date = Date(),
-    var _partition: String = "Public"
+    var _partition: String = "public"
 ) : RealmObject() {
 
     @PrimaryKey

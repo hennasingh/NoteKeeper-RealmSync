@@ -2,11 +2,12 @@ package com.geek.notekeeper.model
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
 import com.geek.notekeeper.R
+import io.realm.OrderedRealmCollection
+import io.realm.RealmRecyclerViewAdapter
 
-class NoteAdapter(var notes: List<Note>) :
-    RecyclerView.Adapter<NoteHolder>() {
+class NoteAdapter(notes: OrderedRealmCollection<Note>) :
+    RealmRecyclerViewAdapter<Note, NoteHolder>(notes, true) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteHolder {
         val view =
@@ -15,16 +16,9 @@ class NoteAdapter(var notes: List<Note>) :
 
     }
 
-    override fun getItemCount(): Int = notes.size
-
 
     override fun onBindViewHolder(holder: NoteHolder, position: Int) {
-        val note = notes[position]
+        val note = getItem(position)
         holder.bindValues(note)
-    }
-
-    fun updateData(list: List<Note>) {
-        notes = list
-        notifyDataSetChanged()
     }
 }

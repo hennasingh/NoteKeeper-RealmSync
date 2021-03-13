@@ -6,7 +6,7 @@ import io.realm.mongodb.App
 import io.realm.mongodb.AppConfiguration
 
 const val appId = "notekeeper-bhavl"
-lateinit var app: App
+lateinit var noteApp: App
 
 class NoteApp : Application() {
 
@@ -14,7 +14,7 @@ class NoteApp : Application() {
         super.onCreate()
         Realm.init(this)
 
-        app = App(AppConfiguration.Builder(appId).build())
+        noteApp = App(AppConfiguration.Builder(appId).build())
 
     }
 }

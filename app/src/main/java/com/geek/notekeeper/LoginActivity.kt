@@ -51,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
             //2
             val googleCredentials = Credentials.google(idToken)
             //3
-            app.loginAsync(googleCredentials) {
+            noteApp.loginAsync(googleCredentials) {
                 if (it.isSuccess) {
                     Log.d("LoginActivity", "Successfully authenticated using Google OAuth")
                     //4

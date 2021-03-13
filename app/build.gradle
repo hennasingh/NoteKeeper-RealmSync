@@ -48,6 +48,9 @@ dependencies {
     //Google OAUth
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
 
+    //RealmRecyclerViewAdapter
+    implementation "io.realm:android-adapters:4.0.0"
+
 
 
 
