@@ -28,20 +28,20 @@ class TaskActivity : AppCompatActivity() {
             .waitForInitialRemoteData()
             .build()
 
-        //Optional step saving the config as default configuration so that other activities can open their own instances.
-        Realm.setDefaultConfiguration(config)
+        //It is recommended to get a Realm Instance asynchronously
+        Realm.getInstanceAsync(config, object : Realm.Callback() {
+            override fun onSuccess(realm: Realm) {
+                // since this realm should live exactly as long as this activity, assign the realm to a member variable
+                this@TaskActivity.realm = realm
+                //Set up Recycler View
+                setUpRecyclerView(realm)
+            }
+        })
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task)
-
-        //getting Realm instance we created in onStart method
-        realm = Realm.getDefaultInstance()
-
-        //setting up RecyclerView
-        setUpRecyclerView(realm)
-
 
         //create a dialog to enter a task name when the floating action button is clicked
         fab.setOnClickListener {
@@ -72,8 +72,8 @@ class TaskActivity : AppCompatActivity() {
 
     private fun setUpRecyclerView(realm: Realm) {
 
-        adapter = NoteAdapter(realm.where<Note>().findAll())
         rv_tasks.layoutManager = LinearLayoutManager(this)
+        adapter = NoteAdapter(realm.where<Note>().sort("date").findAll())
         rv_tasks.adapter = adapter
     }
 
